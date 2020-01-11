@@ -5304,3 +5304,21 @@
 2020-01-08 20:41:00 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
 2020-01-08 20:41:00 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-gk3s",{"micros":0.0}])
 2020-01-08 20:41:00 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-gk3s",{"micros":57282,"calls":["discord-sessions-prd-1-17",{"micros":52447,"calls":["start_session",{"micros":46913,"calls":["api-prd-main-frgf",{"micros":42372,"calls":["get_user",{"micros":4782},"add_authorized_ip",{"micros":3403},"get_guilds",{"micros":6092},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":7,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-12 03:37:46 | [INFO]    | Discordia 2.6.0
+2020-01-12 03:37:46 | [INFO]    | Connecting to Discord...
+2020-01-12 03:37:46 | [ERROR]   | 401 - UNAUTHORIZED : GET https://discordapp.com/api/v7/users/@me
+2020-01-12 03:37:46 | [ERROR]   | Could not authenticate, check token: HTTP Error 0 : 401: Unauthorized
+2020-01-12 03:38:47 | [INFO]    | Discordia 2.6.0
+2020-01-12 03:38:47 | [INFO]    | Connecting to Discord...
+2020-01-12 03:38:47 | [INFO]    | Authenticated as FieldMaster#7387
+2020-01-12 03:38:48 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-12 03:38:48 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-12 03:38:48 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-swcv",{"micros":0.0}])
+2020-01-12 03:38:48 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-swcv",{"micros":74955,"calls":["discord-sessions-prd-1-16",{"micros":72884,"calls":["start_session",{"micros":63324,"calls":["api-prd-main-k9kh",{"micros":60092,"calls":["get_user",{"micros":4796},"add_authorized_ip",{"micros":6992},"get_guilds",{"micros":3393},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":6,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-12 03:38:59 | [INFO]    | Discordia 2.6.0
+2020-01-12 03:38:59 | [INFO]    | Connecting to Discord...
+2020-01-12 03:39:00 | [INFO]    | Authenticated as FieldMaster#7387
+2020-01-12 03:39:00 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-12 03:39:00 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-12 03:39:00 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-tl6v",{"micros":0.0}])
+2020-01-12 03:39:00 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-tl6v",{"micros":63331,"calls":["discord-sessions-prd-1-29",{"micros":61417,"calls":["start_session",{"micros":46873,"calls":["api-prd-main-gf0v",{"micros":42736,"calls":["get_user",{"micros":6628},"add_authorized_ip",{"micros":1493},"get_guilds",{"micros":1834},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":6,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])

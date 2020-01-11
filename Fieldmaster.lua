@@ -294,48 +294,52 @@ client:on("messageCreate", function(message)
 			end
 		elseif(string.lower(string.sub(message.content,2,5)) == "quit") then
 			local TargetUser = message.mentionedUsers.first
-			if(TargetUser.id == name) then
-				local sql = "DELETE FROM '" .. Guild .. "' WHERE ID='" .. name .. "'"
-				BattleDB:exec(sql)
-				message.channel:send("Your Disbanded Your Alliance")
-			else
-				local sql = "select Members from '" .. Guild .. "' Where ID='" .. TargetUser.id .. "' LIMIT 1"
-				local Rows,errorString = BattleDB:exec(sql)
-				local AllianceMembers
-				local isValidAllianse = false
-
-				if errorString == 0 then
-					print("Error At Joining Alliance 2")
+			if(TargetUser ~= nil) then
+				if(TargetUser.id == name) then
+					local sql = "DELETE FROM '" .. Guild .. "' WHERE ID='" .. name .. "'"
+					BattleDB:exec(sql)
+					message.channel:send("Your Disbanded Your Alliance")
 				else
-					for k, v in pairs(Rows) do
-						if(k == "Members") then
-							AllianceMembers = v[1]
-							isValidAllianse = true
-						end
-					end
-				end
+					local sql = "select Members from '" .. Guild .. "' Where ID='" .. TargetUser.id .. "' LIMIT 1"
+					local Rows,errorString = BattleDB:exec(sql)
+					local AllianceMembers
+					local isValidAllianse = false
 
-				if(isValidAllianse) then
-					local Done = false
-					local AllianceMemberIDs = GetAllianceMembers(AllianceMembers)
-					for i=1,#AllianceMemberIDs do
-						local Member = message.channel.guild:getMember(AllianceMemberIDs[i])
-
-						if(Member ~= nil) then
-							if(Member.id == name) then
-								AllianceMembers = string.gsub(AllianceMembers,name .. ",","")
-								sql = "UPDATE '" .. Guild .. "' SET Members = '" .. AllianceMembers .. "' WHERE ID = '" .. TargetUser.id .. "';"
-								BattleDB:exec(sql)	
-								Done = true
-								message.channel:send("You Quit The Alliance")	
-								break						
+					if errorString == 0 then
+						print("Error At Joining Alliance 2")
+					else
+						for k, v in pairs(Rows) do
+							if(k == "Members") then
+								AllianceMembers = v[1]
+								isValidAllianse = true
 							end
 						end
 					end
-					if(Done == false) then
-						message.channel:send("You are not in that alliance")
+				
+					if(isValidAllianse) then
+						local Done = false
+						local AllianceMemberIDs = GetAllianceMembers(AllianceMembers)
+						for i=1,#AllianceMemberIDs do
+							local Member = message.channel.guild:getMember(AllianceMemberIDs[i])
+
+							if(Member ~= nil) then
+								if(Member.id == name) then
+									AllianceMembers = string.gsub(AllianceMembers,name .. ",","")
+									sql = "UPDATE '" .. Guild .. "' SET Members = '" .. AllianceMembers .. "' WHERE ID = '" .. TargetUser.id .. "';"
+									BattleDB:exec(sql)	
+									Done = true
+									message.channel:send("You Quit The Alliance")	
+									break						
+								end
+							end
+						end
+						if(Done	== false) then
+							message.channel:send("You are not in that alliance")
+						end
 					end
 				end
+			else
+				message.channel:send("You need to tag a user to quit alliance from")
 			end
 		elseif(string.lower(string.sub(message.content,2,7)) == "attack") then
 			print("Normal")
