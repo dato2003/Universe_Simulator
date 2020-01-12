@@ -9,12 +9,6 @@ client:on('ready', function()
 	print('Logged in as '.. client.user.username)
 end)
 
-local MoneyDB = sql.open("MoneyDB.db")
-local WorldDB = sql.open("WorldDB.db")
-
-local sql = "PRAGMA journal_mode=WAL"
-WorldDB:exec(sql)
-MoneyDB:exec(sql)
 
 function GetTroops(TroopsData)
 	local Template = {"archers","swordsmen","casters","cavalry"}
@@ -58,6 +52,14 @@ client:on('messageCreate', function(message)
 	local Guild = message.channel.guild.id
 	local AuthorMentionName = message.author.mentionString
 
+	local MoneyDB = sql.open("MoneyDB.db")
+	local WorldDB = sql.open("WorldDB.db")
+	
+	local sql = "PRAGMA journal_mode=WAL"
+	WorldDB:exec(sql)
+	MoneyDB:exec(sql)
+	
+
 	local sql = "CREATE TABLE IF NOT EXISTS '" .. Guild .. "' (ID TEXT,Domain TEXT, Walls TEXT, Castle TEXT, Tavern TEXT, Training_Ground TEXT,Troops TEXT)"
 	WorldDB:exec(sql)
 
@@ -92,6 +94,8 @@ client:on('messageCreate', function(message)
 			else
             	message.channel:send("You Already Have Land Greedy Bastard!!")
 			end
+			MoneyDB:close()
+			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,#message.content)) == "domain") then
 			
 			local Walls=0
@@ -161,6 +165,8 @@ client:on('messageCreate', function(message)
 					timestamp = discordia.Date():toISO('T',"Z")
 				}}
 			end
+			MoneyDB:close()
+			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,8)) == "upgrade") then
 			local Target
 			
@@ -263,6 +269,8 @@ client:on('messageCreate', function(message)
 			else
 				message.channel:send("Upgrade What You Fool!!")
 			end
+			MoneyDB:close()
+			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,6)) == "train") then
 			local Unit = string.lower(string.sub(message.content,8,#message.content))
 			local domainName
@@ -338,6 +346,8 @@ client:on('messageCreate', function(message)
 			else
 				message.channel:send("That's not an unit or you dont have a domain")
 			end
+			MoneyDB:close()
+			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,#message.content)) == "army") then
 			local domainName
 
@@ -398,11 +408,15 @@ client:on('messageCreate', function(message)
 					timestamp = discordia.Date():toISO('T',"Z")
 				}}
 			end
+			MoneyDB:close()
+			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,11)) == "changename") then
 			local NewName = string.sub(message.content,13,#message.content)
 			sql = "UPDATE '" .. Guild .. "' SET Domain = '" .. NewName .. "' WHERE ID = " .. name .. ";"
 			WorldDB:exec(sql)
 			message.channel:send("You Changed Name of Your Domain !")
+			MoneyDB:close()
+			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,13)) == "collecttaxes") then
 			
 			sql = "select Tavern from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
@@ -453,6 +467,8 @@ client:on('messageCreate', function(message)
 			else
 				message.channel:send("You Already Collected Taxes for now")
 			end
+			MoneyDB:close()
+			WorldDB:close()
 		end
 	end
 end)

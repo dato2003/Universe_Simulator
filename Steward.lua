@@ -10,11 +10,7 @@ client:on('ready', function()
 	print('Logged in as '.. client.user.username)
 end)
 
---Open a DB where you keep the money
-local db = sql.open("MoneyDB.db")
 
-local sql = "PRAGMA journal_mode=WAL"
-db:exec(sql)
 --People that are on cooldown and should not get exp will be in this table
 local CooldownTable = {}
 
@@ -27,6 +23,12 @@ client:on('messageCreate', function(message)
 	local name = message.author.id
 	local Guild = message.channel.guild.id
 	local AuthorMentionName = message.author.mentionString
+
+	--Open a DB where you keep the money
+	local db = sql.open("MoneyDB.db")
+
+	local sql = "PRAGMA journal_mode=WAL"
+	db:exec(sql)
 
 	sql = "CREATE TABLE IF NOT EXISTS '" .. Guild .. "' (ID TEXT, Coins TEXT)"
 	db:exec(sql)
@@ -53,6 +55,7 @@ client:on('messageCreate', function(message)
 				--Send Back the msg of the money
 				message.channel:send(body .. Curr)
 			end
+			db:close()
 		--IF command is >pay or >Pay
 		elseif(string.lower(string.sub(message.content,2,4)) == "pay") then
 			--Check that persion that is being paid is real
@@ -114,6 +117,7 @@ client:on('messageCreate', function(message)
 				message.channel:send("To Who?")
 			end
 		end
+		db:close()
 	--IF There is no Command and is a normal MSG and is not on Cooldown adds gold
 	elseif(name ~= "643070824403959808" and (CooldownTable[name] == false or CooldownTable[name] == nil)) then
 		sql = "select Coins from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
@@ -139,6 +143,7 @@ client:on('messageCreate', function(message)
 			CooldownTable[name] = true
 			timer.setTimeout(10000,Cooldown,name)
 		end
+		db:close()
 	end
 end)
 

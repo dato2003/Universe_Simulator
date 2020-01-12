@@ -5322,3 +5322,14 @@
 2020-01-12 03:39:00 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
 2020-01-12 03:39:00 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-tl6v",{"micros":0.0}])
 2020-01-12 03:39:00 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-tl6v",{"micros":63331,"calls":["discord-sessions-prd-1-29",{"micros":61417,"calls":["start_session",{"micros":46873,"calls":["api-prd-main-gf0v",{"micros":42736,"calls":["get_user",{"micros":6628},"add_authorized_ip",{"micros":1493},"get_guilds",{"micros":1834},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":6,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-12 19:54:53 | [INFO]    | Discordia 2.6.0
+2020-01-12 19:54:53 | [INFO]    | Connecting to Discord...
+2020-01-12 19:54:54 | [ERROR]   | 401 - UNAUTHORIZED : GET https://discordapp.com/api/v7/users/@me
+2020-01-12 19:54:54 | [ERROR]   | Could not authenticate, check token: HTTP Error 0 : 401: Unauthorized
+2020-01-12 19:58:38 | [INFO]    | Discordia 2.6.0
+2020-01-12 19:58:38 | [INFO]    | Connecting to Discord...
+2020-01-12 19:58:39 | [INFO]    | Authenticated as FieldMaster#7387
+2020-01-12 19:58:39 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-12 19:58:39 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-12 19:58:39 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-vkpb",{"micros":0.0}])
+2020-01-12 19:58:40 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-vkpb",{"micros":109867,"calls":["discord-sessions-prd-1-38",{"micros":107142,"calls":["start_session",{"micros":100870,"calls":["api-prd-main-4l5f",{"micros":97443,"calls":["get_user",{"micros":4546},"add_authorized_ip",{"micros":1553},"get_guilds",{"micros":41372},"coros_wait",{"micros":4}]}]},"guilds_connect",{"micros":4,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
