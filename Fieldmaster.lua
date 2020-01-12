@@ -341,7 +341,7 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You need to tag a user to quit alliance from")
 			end
-		elseif(string.lower(string.sub(message.content,2,7)) == "attack") then
+		elseif(string.lower(string.sub(message.content,2,7)) == "attack" and message.mentionedUsers.first ~= nil) then
 			print("Normal")
 			local Target = message.mentionedUsers.first
 			local EnemyDomain,FriendlyDomain
@@ -780,7 +780,7 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You and the Enemy Both Must Have a Domain (get one by .getdomain)")
 			end
-		elseif(string.lower(string.sub(message.content,2,13)) == "domainattack") then
+		elseif(string.lower(string.sub(message.content,2,13)) == "domainattack" and message.mentionedUsers.first ~= nil) then
 			local Target = message.mentionedUsers.first
 			local EnemyDomain,FriendlyDomain
 			
