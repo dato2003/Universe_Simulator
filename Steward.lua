@@ -10,6 +10,11 @@ client:on('ready', function()
 	print('Logged in as '.. client.user.username)
 end)
 
+--Open a DB where you keep the money
+local db = sql.open("MoneyDB.db")
+
+local sql = "PRAGMA journal_mode=WAL"
+db:exec(sql)
 
 --People that are on cooldown and should not get exp will be in this table
 local CooldownTable = {}
@@ -23,12 +28,6 @@ client:on('messageCreate', function(message)
 	local name = message.author.id
 	local Guild = message.channel.guild.id
 	local AuthorMentionName = message.author.mentionString
-
-	--Open a DB where you keep the money
-	local db = sql.open("MoneyDB.db")
-
-	local sql = "PRAGMA journal_mode=WAL"
-	db:exec(sql)
 
 	sql = "CREATE TABLE IF NOT EXISTS '" .. Guild .. "' (ID TEXT, Coins TEXT)"
 	db:exec(sql)

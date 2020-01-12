@@ -8,6 +8,13 @@ client:on("ready", function()
 	print("Logged in as ".. client.user.username)
 end)
 
+local BattleDB = sql.open("BattleDB.db")
+local WorldDB = sql.open("WorldDB.db")
+local MoneyDB = sql.open("MoneyDB.db")
+
+local sql = "PRAGMA journal_mode=WAL"
+WorldDB:exec(sql)
+MoneyDB:exec(sql)
 
 function StringChunck(str,n)
 	local k,t
@@ -101,14 +108,6 @@ client:on("messageCreate", function(message)
 	local name = message.author.id
 	local Guild = message.channel.guild.id
 	local AuthorMentionName = message.author.mentionString
-
-	local BattleDB = sql.open("BattleDB.db")
-	local WorldDB = sql.open("WorldDB.db")
-	local MoneyDB = sql.open("MoneyDB.db")
-	
-	local sql = "PRAGMA journal_mode=WAL"
-	WorldDB:exec(sql)
-	MoneyDB:exec(sql)
 
 	local sql = "CREATE TABLE IF NOT EXISTS '" .. Guild .. "' (ID TEXT,Alliance TEXT,Members TEXT)"
 	BattleDB:exec(sql)

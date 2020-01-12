@@ -10,6 +10,13 @@ client:on('ready', function()
 end)
 
 
+local MoneyDB = sql.open("MoneyDB.db")
+local WorldDB = sql.open("WorldDB.db")
+
+local sql = "PRAGMA journal_mode=WAL"
+WorldDB:exec(sql)
+MoneyDB:exec(sql)
+
 function GetTroops(TroopsData)
 	local Template = {"archers","swordsmen","casters","cavalry"}
 	local Troops = {}
@@ -51,14 +58,6 @@ client:on('messageCreate', function(message)
 	local name = message.author.id
 	local Guild = message.channel.guild.id
 	local AuthorMentionName = message.author.mentionString
-
-	local MoneyDB = sql.open("MoneyDB.db")
-	local WorldDB = sql.open("WorldDB.db")
-	
-	local sql = "PRAGMA journal_mode=WAL"
-	WorldDB:exec(sql)
-	MoneyDB:exec(sql)
-	
 
 	local sql = "CREATE TABLE IF NOT EXISTS '" .. Guild .. "' (ID TEXT,Domain TEXT, Walls TEXT, Castle TEXT, Tavern TEXT, Training_Ground TEXT,Troops TEXT)"
 	WorldDB:exec(sql)
