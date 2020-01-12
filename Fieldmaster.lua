@@ -942,7 +942,7 @@ client:on("messageCreate", function(message)
 				end
 				if(FriendlyAllianceMembers == nil) then
 					FriendlyAllianceMemberIDs = {name}
-					FriendlyAllianceTroops = GetAllianceTroops({name},guild)
+					FriendlyAllianceTroops = GetAllianceTroops({name},Guild)
 				end
 				if(EnemyAllianceName == nil) then
 					print("mmm")

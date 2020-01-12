@@ -265,8 +265,21 @@ client:on('messageCreate', function(message)
 			end
 		elseif(string.lower(string.sub(message.content,2,6)) == "train") then
 			local Unit = string.lower(string.sub(message.content,8,#message.content))
+			local domainName
 
-			if(UnitsWiki[Unit] ~= nil) then 
+			sql = "select Domain from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
+			local Rows,errorString = WorldDB:exec(sql)
+			if errorString == 0 then
+				HasDomain = 1
+				message.channel:send("Buy Piece Of Land For 200 Gold.(.getdomain)")
+			else
+				--Get The Coins
+				for k, v in pairs(Rows) do
+					if(k == "Domain") then domainName = v end
+				end
+			end
+
+			if(UnitsWiki[Unit] ~= nil and domainName ~= nil) then 
 
 				sql = "select * from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
 				Rows,errorString = WorldDB:exec(sql)
@@ -323,7 +336,7 @@ client:on('messageCreate', function(message)
 					message.channel:send("You Can't Hold That Many Soldiers. Upgrade Your Training Grounds To Train More Soldiers")
 				end
 			else
-				message.channel:send("That's not an unit")
+				message.channel:send("That's not an unit or you dont have a domain")
 			end
 		elseif(string.lower(string.sub(message.content,2,#message.content)) == "army") then
 			sql = "select Troops from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
