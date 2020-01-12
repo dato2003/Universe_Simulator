@@ -57,7 +57,7 @@ function GetTroops(TroopsData)
 	return Troops
 end
 
-function GetAllianceTroops(AllianceMemberIDs,GuildID)
+function GetAllianceTroops(AllianceMemberIDs,GuildID,WorldDB)
 	local AllianceTroops = {
 		["archers"] = 0,
 		["swordsmen"] = 0,
@@ -220,7 +220,7 @@ client:on("messageCreate", function(message)
 					end
 				end
 				
-				local AllianceTroops = GetAllianceTroops(AllianceMemberIDs,Guild)
+				local AllianceTroops = GetAllianceTroops(AllianceMemberIDs,Guild,WorldDB)
 				message.channel:send{embed = {
 					title = AllianceName,
 					fields = {
@@ -497,7 +497,7 @@ client:on("messageCreate", function(message)
 						end
 					end
 
-					EnemyAllianceTroops = GetAllianceTroops(EnemyAllianceMemberIDs,Guild)
+					EnemyAllianceTroops = GetAllianceTroops(EnemyAllianceMemberIDs,Guild,WorldDB)
 				end
 				if(FriendlyAllianceMembers ~= nil) then
 					FriendlyAllianceMemberIDs = GetAllianceMembers(FriendlyAllianceMembers)
@@ -509,15 +509,15 @@ client:on("messageCreate", function(message)
 						end
 					end
 
-					FriendlyAllianceTroops = GetAllianceTroops(FriendlyAllianceMemberIDs,Guild)
+					FriendlyAllianceTroops = GetAllianceTroops(FriendlyAllianceMemberIDs,Guild,WorldDB)
 				end
 				if(EnemyAllianceMembers == nil) then
 					EnemyAllianceMemberIDs = {Target.id}
-					EnemyAllianceTroops = GetAllianceTroops({Target.id},Guild)
+					EnemyAllianceTroops = GetAllianceTroops({Target.id},Guild,WorldDB)
 				end
 				if(FriendlyAllianceMembers == nil) then
 					FriendlyAllianceMemberIDs = {name}
-					FriendlyAllianceTroops = GetAllianceTroops({name},guild)
+					FriendlyAllianceTroops = GetAllianceTroops({name},Guild,WorldDB)
 				end
 				if(EnemyAllianceName == nil) then
 					print("NILL")
