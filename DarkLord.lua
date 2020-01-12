@@ -339,48 +339,65 @@ client:on('messageCreate', function(message)
 				message.channel:send("That's not an unit or you dont have a domain")
 			end
 		elseif(string.lower(string.sub(message.content,2,#message.content)) == "army") then
-			sql = "select Troops from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
+			local domainName
+
+			sql = "select Domain from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
 			local Rows,errorString = WorldDB:exec(sql)
-			local TroopsData
-
 			if errorString == 0 then
-				print("Gold Entry Does not exist in the MoneyDB")
+				HasDomain = 1
+				message.channel:send("Buy Piece Of Land For 200 Gold.(.getdomain)")
 			else
+				--Get The Coins
 				for k, v in pairs(Rows) do
-					if(k == "Troops") then
-						TroopsData = v[1]
-					end
+					if(k == "Domain") then domainName = v end
 				end
 			end
-			local Troops = GetTroops(TroopsData)
 
-			sql = "select Training_Ground from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
-			Rows,errorString = WorldDB:exec(sql)
-			local Tier,Capacity
+			if(domainName ~= nil) then
 
-			if errorString == 0 then
-				print(errorString)
-			else
-				for k, v in pairs(Rows) do
-					if(k == "Training_Ground") then
-						Tier = v[1]
+				sql = "select Troops from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
+				local Rows,errorString = WorldDB:exec(sql)
+				local TroopsData
+
+				if errorString == 0 then
+					print("Gold Entry Does not exist in the MoneyDB")
+				else
+					for k, v in pairs(Rows) do
+						if(k == "Troops") then
+							TroopsData = v[1]
+						end
 					end
 				end
-			end
-			Capacity = Tier * 30
+				local Troops = GetTroops(TroopsData)
 
-			message.channel:send{embed = {
-				title = "Army of " .. message.author.name,
-				fields = {
-					{name = "Capacity",value = Capacity,inline = false},
-					{name = "Archers",value = Troops["archers"],inline = false},
-					{name = "Swordsmen",value = Troops["swordsmen"],inline = false},
-					{name = "Casters",value = Troops["casters"],inline = false},
-					{name = "Cavalry",value = Troops["cavalry"],inline = false},
-				},
-				color = discordia.Color.fromRGB(114,137,218).value,
-				timestamp = discordia.Date():toISO('T',"Z")
-			}}
+				sql = "select Training_Ground from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
+				Rows,errorString = WorldDB:exec(sql)
+				local Tier,Capacity
+
+				if errorString == 0 then
+					print(errorString)
+				else
+					for k, v in pairs(Rows) do
+						if(k == "Training_Ground") then
+							Tier = v[1]
+						end
+					end
+				end
+				Capacity = Tier * 30
+
+				message.channel:send{embed = {
+					title = "Army of " .. message.author.name,
+					fields = {
+						{name = "Capacity",value = Capacity,inline = false},
+						{name = "Archers",value = Troops["archers"],inline = false},
+						{name = "Swordsmen",value = Troops["swordsmen"],inline = false},
+						{name = "Casters",value = Troops["casters"],inline = false},
+						{name = "Cavalry",value = Troops["cavalry"],inline = false},
+					},
+					color = discordia.Color.fromRGB(114,137,218).value,
+					timestamp = discordia.Date():toISO('T',"Z")
+				}}
+			end
 		elseif(string.lower(string.sub(message.content,2,11)) == "changename") then
 			local NewName = string.sub(message.content,13,#message.content)
 			sql = "UPDATE '" .. Guild .. "' SET Domain = '" .. NewName .. "' WHERE ID = " .. name .. ";"
