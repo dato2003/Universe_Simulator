@@ -189,9 +189,6 @@ client:on("messageCreate", function(message)
 				color = discordia.Color.fromRGB(114,137,218).value,
 				timestamp = discordia.Date():toISO('T',"Z")
 			}}
-			MoneyDB:close()
-			WorldDB:close()
-			BattleDB:close()
 		elseif(string.lower(string.sub(message.content,2,11)) == "myalliance") then
 			sql = "select * from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
 			local Rows,errorString = BattleDB:exec(sql)
@@ -239,9 +236,6 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You Dont Have an Alliance")
 			end
-			MoneyDB:close()
-			WorldDB:close()
-			BattleDB:close()
 		elseif(string.lower(string.sub(message.content,2,5)) == "join") then
 			local TargetUser = message.mentionedUsers.first
 			
@@ -298,9 +292,6 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You Can't Join Your Own Alliance or The alliance does not exist.You Also Need to Own A domain to join alliances")
 			end
-			MoneyDB:close()
-			WorldDB:close()
-			BattleDB:close()
 		elseif(string.lower(string.sub(message.content,2,5)) == "quit") then
 			local TargetUser = message.mentionedUsers.first
 			if(TargetUser ~= nil) then
@@ -350,9 +341,6 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You need to tag a user to quit alliance from")
 			end
-			MoneyDB:close()
-			WorldDB:close()
-			BattleDB:close()
 		elseif(string.lower(string.sub(message.content,2,7)) == "attack" and message.mentionedUsers.first ~= nil) then
 			print("Normal")
 			local Target = message.mentionedUsers.first
@@ -792,9 +780,6 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You and the Enemy Both Must Have a Domain (get one by .getdomain)")
 			end
-			MoneyDB:close()
-			WorldDB:close()
-			BattleDB:close()
 		elseif(string.lower(string.sub(message.content,2,13)) == "domainattack" and message.mentionedUsers.first ~= nil) then
 			local Target = message.mentionedUsers.first
 			local EnemyDomain,FriendlyDomain
@@ -1274,9 +1259,6 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You and the Enemy Both Must Have a Domain (get one by .getdomain)")
 			end
-			MoneyDB:close()
-			WorldDB:close()
-			BattleDB:close()
 		elseif(string.lower(string.sub(message.content,2,11)) == "changename") then
 			local NewName = string.sub(message.content,13,#message.content)
 
@@ -1302,9 +1284,6 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You Dont Lead An Alliance to change name of")
 			end
-			MoneyDB:close()
-			WorldDB:close()
-			BattleDB:close()
 		end
 	end
 end)

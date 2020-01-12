@@ -94,8 +94,6 @@ client:on('messageCreate', function(message)
 			else
             	message.channel:send("You Already Have Land Greedy Bastard!!")
 			end
-			MoneyDB:close()
-			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,#message.content)) == "domain") then
 			
 			local Walls=0
@@ -165,8 +163,6 @@ client:on('messageCreate', function(message)
 					timestamp = discordia.Date():toISO('T',"Z")
 				}}
 			end
-			MoneyDB:close()
-			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,8)) == "upgrade") then
 			local Target
 			
@@ -269,8 +265,6 @@ client:on('messageCreate', function(message)
 			else
 				message.channel:send("Upgrade What You Fool!!")
 			end
-			MoneyDB:close()
-			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,6)) == "train") then
 			local Unit = string.lower(string.sub(message.content,8,#message.content))
 			local domainName
@@ -346,8 +340,6 @@ client:on('messageCreate', function(message)
 			else
 				message.channel:send("That's not an unit or you dont have a domain")
 			end
-			MoneyDB:close()
-			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,#message.content)) == "army") then
 			local domainName
 
@@ -408,15 +400,11 @@ client:on('messageCreate', function(message)
 					timestamp = discordia.Date():toISO('T',"Z")
 				}}
 			end
-			MoneyDB:close()
-			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,11)) == "changename") then
 			local NewName = string.sub(message.content,13,#message.content)
 			sql = "UPDATE '" .. Guild .. "' SET Domain = '" .. NewName .. "' WHERE ID = " .. name .. ";"
 			WorldDB:exec(sql)
 			message.channel:send("You Changed Name of Your Domain !")
-			MoneyDB:close()
-			WorldDB:close()
 		elseif(string.lower(string.sub(message.content,2,13)) == "collecttaxes") then
 			
 			sql = "select Tavern from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
@@ -467,8 +455,6 @@ client:on('messageCreate', function(message)
 			else
 				message.channel:send("You Already Collected Taxes for now")
 			end
-			MoneyDB:close()
-			WorldDB:close()
 		end
 	end
 end)
