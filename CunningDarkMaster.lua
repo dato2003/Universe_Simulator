@@ -1215,20 +1215,23 @@ client:on("messageCreate", function(message)
 							keyset[n] = k
 						end
 						local unitchoice = math.random(#keyset)
-						local AttackRoll = math.random(20) + UnitsWiki2[FriendlyTurns[i]][1] + (2 * FriendlyCastleTier)
-						local DefenseRoll = math.random(20) + UnitsWiki2[EnemyTurns[keyset[unitchoice]]][2] + (2 * EnemyCastleTier)
-						--print("Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]])
-						FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]] .. "\n"
-						if(AttackRoll > DefenseRoll) then
-							--print("Friendly " .. FriendlyTurns[i] .. " Killed Enemy " .. EnemyTurns[keyset[unitchoice]])
-							FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[i] .. " Killed Enemy " .. EnemyTurns[keyset[unitchoice]] .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
-							EnemyCasualities[EnemyTurns[keyset[unitchoice]]] = EnemyCasualities[EnemyTurns[keyset[unitchoice]]] + 1
-							table.remove(EnemyTurns,keyset[unitchoice])
+						if(keyset[unitchoice] ~= nil) then
+							local AttackRoll = math.random(20) + UnitsWiki2[FriendlyTurns[i]][1] + (2 * FriendlyCastleTier)
+							local DefenseRoll = math.random(20) + UnitsWiki2[EnemyTurns[keyset[unitchoice]]][2] + (2 * EnemyCastleTier)
+							--print("Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]])
+							FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]] .. "\n"
+							if(AttackRoll > DefenseRoll) then
+								--print("Friendly " .. FriendlyTurns[i] .. " Killed Enemy " .. EnemyTurns[keyset[unitchoice]])
+								FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[i] .. " Killed Enemy " .. EnemyTurns[keyset[unitchoice]] .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+								EnemyCasualities[EnemyTurns[keyset[unitchoice]]] = EnemyCasualities[EnemyTurns[keyset[unitchoice]]] + 1
+								table.remove(EnemyTurns,keyset[unitchoice])
+							else
+								--print("Enemy " .. EnemyTurns[keyset[unitchoice]] .. " Survived")
+								FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[keyset[unitchoice]] .. " Survived" .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+							end
 						else
-							--print("Enemy " .. EnemyTurns[keyset[unitchoice]] .. " Survived")
-							FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[keyset[unitchoice]] .. " Survived" .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+
 						end
-					
 					elseif(EnemyTurns[i] ~= nil) then
 						local keyset = {}
 						local n = 0
@@ -1237,19 +1240,22 @@ client:on("messageCreate", function(message)
 							keyset[n] = k
 						end
 						local unitchoice = math.random(#keyset)
-
-						local AttackRoll = math.random(20) + UnitsWiki2[EnemyTurns[i]][1] + (2 * EnemyCastleTier)
-						local DefenseRoll = math.random(20) + UnitsWiki2[FriendlyTurns[keyset[unitchoice]]][2] + (2 * FriendlyCastleTier)
-						--print("Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]])
-						FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]] .. "\n"
-						if(AttackRoll > DefenseRoll) then
-							--print("Enemy " .. EnemyTurns[i] .. " Killed Friendly " .. FriendlyTurns[keyset[unitchoice]])
-							FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[i] .. " Killed Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
-							FriendlyCasualities[FriendlyTurns[keyset[unitchoice]]] = FriendlyCasualities[FriendlyTurns[keyset[unitchoice]]] + 1
-							table.remove(FriendlyTurns,keyset[unitchoice])
+						if(keyset[unitchoice] ~= nil) then
+							local AttackRoll = math.random(20) + UnitsWiki2[EnemyTurns[i]][1] + (2 * EnemyCastleTier)
+							local DefenseRoll = math.random(20) + UnitsWiki2[FriendlyTurns[keyset[unitchoice]]][2] + (2 * FriendlyCastleTier)
+							--print("Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]])
+							FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]] .. "\n"
+							if(AttackRoll > DefenseRoll) then
+								--print("Enemy " .. EnemyTurns[i] .. " Killed Friendly " .. FriendlyTurns[keyset[unitchoice]])
+								FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[i] .. " Killed Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+								FriendlyCasualities[FriendlyTurns[keyset[unitchoice]]] = FriendlyCasualities[FriendlyTurns[keyset[unitchoice]]] + 1
+								table.remove(FriendlyTurns,keyset[unitchoice])
+							else
+								--print("Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " Survived")
+								FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " Survived" .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+							end
 						else
-							--print("Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " Survived")
-							FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " Survived" .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+							
 						end
 					end
 				end
@@ -1630,6 +1636,9 @@ client:on("messageCreate", function(message)
 
 				print("\n")
 				math.randomseed(os.time())
+				local EnemyHasNoTroops = false
+				local FriendlyHasNoTroops = false
+
 				for i=1,TotalTroopsNumber do
 
 					if(FriendlyTurns[i] ~= nil) then
@@ -1640,21 +1649,23 @@ client:on("messageCreate", function(message)
 							keyset[n] = k
 						end
 						local unitchoice = math.random(#keyset)
-
-						local AttackRoll = math.random(20) + UnitsWiki2[FriendlyTurns[i]][1] + (2 * FriendlyCastleTier)
-						local DefenseRoll = math.random(20) + UnitsWiki2[EnemyTurns[keyset[unitchoice]]][2] + (2 * EnemyWallsTier) + (2 * EnemyCastleTier)
-						--print("Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]])
-						FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]] .. "\n"
-						if(AttackRoll > DefenseRoll) then
-							--print("Friendly " .. FriendlyTurns[i] .. " Killed Enemy " .. EnemyTurns[keyset[unitchoice]])
-							FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[i] .. " Killed Enemy " .. EnemyTurns[keyset[unitchoice]] .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
-							EnemyCasualities[EnemyTurns[keyset[unitchoice]]] = EnemyCasualities[EnemyTurns[keyset[unitchoice]]] + 1
-							table.remove(EnemyTurns,keyset[unitchoice])
+						if(keyset[unitchoice] ~= nil) then
+							local AttackRoll = math.random(20) + UnitsWiki2[FriendlyTurns[i]][1] + (2 * FriendlyCastleTier)
+							local DefenseRoll = math.random(20) + UnitsWiki2[EnemyTurns[keyset[unitchoice]]][2] + (2 * EnemyWallsTier) + (2 * EnemyCastleTier)
+							--print("Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]])
+							FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]] .. "\n"
+							if(AttackRoll > DefenseRoll) then
+								--print("Friendly " .. FriendlyTurns[i] .. " Killed Enemy " .. EnemyTurns[keyset[unitchoice]])
+								FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[i] .. " Killed Enemy " .. EnemyTurns[keyset[unitchoice]] .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+								EnemyCasualities[EnemyTurns[keyset[unitchoice]]] = EnemyCasualities[EnemyTurns[keyset[unitchoice]]] + 1
+								table.remove(EnemyTurns,keyset[unitchoice])
+							else
+								--print("Enemy " .. EnemyTurns[keyset[unitchoice]] .. " Survived")
+								FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[keyset[unitchoice]] .. " Survived" .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+							end
 						else
-							--print("Enemy " .. EnemyTurns[keyset[unitchoice]] .. " Survived")
-							FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[keyset[unitchoice]] .. " Survived" .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+							EnemyHasNoTroops = true
 						end
-					
 					elseif(EnemyTurns[i] ~= nil) then
 						local keyset = {}
 						local n = 0
@@ -1663,19 +1674,22 @@ client:on("messageCreate", function(message)
 							keyset[n] = k
 						end
 						local unitchoice = math.random(#keyset)
-
-						local AttackRoll = math.random(20) + UnitsWiki2[EnemyTurns[i]][1] + (2 * EnemyWallsTier) + (2 * EnemyCastleTier)
-						local DefenseRoll = math.random(20) + UnitsWiki2[FriendlyTurns[keyset[unitchoice]]][2] + (2 * FriendlyCastleTier)
-						--print("Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]])
-						FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]] .. "\n"
-						if(AttackRoll > DefenseRoll) then
-							--print("Enemy " .. EnemyTurns[i] .. " Killed Friendly " .. FriendlyTurns[keyset[unitchoice]])
-							FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[i] .. " Killed Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
-							FriendlyCasualities[FriendlyTurns[keyset[unitchoice]]] = FriendlyCasualities[FriendlyTurns[keyset[unitchoice]]] + 1
-							table.remove(FriendlyTurns,keyset[unitchoice])
+						if(keyset[unitchoice] ~= nil) then
+							local AttackRoll = math.random(20) + UnitsWiki2[EnemyTurns[i]][1] + (2 * EnemyWallsTier) + (2 * EnemyCastleTier)
+							local DefenseRoll = math.random(20) + UnitsWiki2[FriendlyTurns[keyset[unitchoice]]][2] + (2 * FriendlyCastleTier)
+							--print("Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]])
+							FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]] .. "\n"
+							if(AttackRoll > DefenseRoll) then
+								--print("Enemy " .. EnemyTurns[i] .. " Killed Friendly " .. FriendlyTurns[keyset[unitchoice]])
+								FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[i] .. " Killed Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+								FriendlyCasualities[FriendlyTurns[keyset[unitchoice]]] = FriendlyCasualities[FriendlyTurns[keyset[unitchoice]]] + 1
+								table.remove(FriendlyTurns,keyset[unitchoice])
+							else
+								--print("Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " Survived")
+								FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " Survived" .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+							end
 						else
-							--print("Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " Survived")
-							FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " Survived" .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
+							FriendlyHasNoTroops = true
 						end
 					end
 				end
@@ -1764,7 +1778,7 @@ client:on("messageCreate", function(message)
 				local winner = ""
 				local ResultString = ""
 				
-				if(TotalFriendlyCasualties / FriendlyTroopsNumberAtBeginning < TotalEnemyTroopsCasualties / EnemyTroopsNumberAtBeginning) then
+				if((TotalFriendlyCasualties / FriendlyTroopsNumberAtBeginning < TotalEnemyTroopsCasualties / EnemyTroopsNumberAtBeginning) or EnemyHasNoTroops) then
 					winner = FriendlyAllianceName
 
 					sql = "select Coins from '" .. Guild .. "' Where ID='" .. Target.id .. "' LIMIT 1"
