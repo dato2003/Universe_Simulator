@@ -5333,3 +5333,38 @@
 2020-01-12 19:58:39 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
 2020-01-12 19:58:39 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-vkpb",{"micros":0.0}])
 2020-01-12 19:58:40 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-vkpb",{"micros":109867,"calls":["discord-sessions-prd-1-38",{"micros":107142,"calls":["start_session",{"micros":100870,"calls":["api-prd-main-4l5f",{"micros":97443,"calls":["get_user",{"micros":4546},"add_authorized_ip",{"micros":1553},"get_guilds",{"micros":41372},"coros_wait",{"micros":4}]}]},"guilds_connect",{"micros":4,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-13 02:14:10 | [INFO]    | Discordia 2.6.0
+2020-01-13 02:14:10 | [INFO]    | Connecting to Discord...
+2020-01-13 02:14:11 | [INFO]    | Authenticated as Steward#3975
+2020-01-13 02:14:11 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-13 02:14:12 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-13 02:14:12 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-c2s6",{"micros":0.0}])
+2020-01-13 02:14:12 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-c2s6",{"micros":53869,"calls":["discord-sessions-prd-1-10",{"micros":52032,"calls":["start_session",{"micros":48716,"calls":["api-prd-main-d41d",{"micros":44651,"calls":["get_user",{"micros":12430},"add_authorized_ip",{"micros":1708},"get_guilds",{"micros":2769},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":19,"calls":[]},"presence_connect",{"micros":0,"calls":[]}]}]}])
+2020-01-13 02:15:35 | [INFO]    | Discordia 2.6.0
+2020-01-13 02:15:35 | [INFO]    | Connecting to Discord...
+2020-01-13 02:15:35 | [INFO]    | Authenticated as Steward#3975
+2020-01-13 02:15:35 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-13 02:15:36 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-13 02:15:36 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-gl78",{"micros":0.0}])
+2020-01-13 02:15:36 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-gl78",{"micros":77276,"calls":["discord-sessions-prd-1-20",{"micros":73639,"calls":["start_session",{"micros":70344,"calls":["api-prd-main-wl15",{"micros":66329,"calls":["get_user",{"micros":5290},"add_authorized_ip",{"micros":3427},"get_guilds",{"micros":5901},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":7,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-13 02:24:10 | [INFO]    | Discordia 2.6.0
+2020-01-13 02:24:10 | [INFO]    | Connecting to Discord...
+2020-01-13 02:24:11 | [INFO]    | Authenticated as Steward#3975
+2020-01-13 02:24:11 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-13 02:24:11 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-13 02:24:11 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-z774",{"micros":0.0}])
+2020-01-13 02:24:12 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-z774",{"micros":122420,"calls":["discord-sessions-prd-1-22",{"micros":117456,"calls":["start_session",{"micros":111755,"calls":["api-prd-main-c9l6",{"micros":105995,"calls":["get_user",{"micros":48668},"add_authorized_ip",{"micros":2090},"get_guilds",{"micros":4673},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":8,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-13 16:06:27 | [INFO]    | Discordia 2.6.0
+2020-01-13 16:06:27 | [INFO]    | Connecting to Discord...
+2020-01-13 16:06:27 | [INFO]    | Authenticated as Steward#3975
+2020-01-13 16:06:28 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-13 16:06:28 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-13 16:06:28 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-mnq3",{"micros":0.0}])
+2020-01-13 16:06:28 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-mnq3",{"micros":115593,"calls":["discord-sessions-prd-1-33",{"micros":113621,"calls":["start_session",{"micros":101072,"calls":["api-prd-main-07jz",{"micros":95236,"calls":["get_user",{"micros":10560},"add_authorized_ip",{"micros":6387},"get_guilds",{"micros":5592},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":5,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-13 16:13:46 | [INFO]    | Discordia 2.6.0
+2020-01-13 16:13:46 | [INFO]    | Connecting to Discord...
+2020-01-13 16:13:46 | [INFO]    | Authenticated as Steward#3975
+2020-01-13 16:13:46 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-13 16:13:47 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-13 16:13:47 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-zjmn",{"micros":0.0}])
+2020-01-13 16:13:47 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-zjmn",{"micros":103405,"calls":["discord-sessions-prd-1-21",{"micros":96814,"calls":["start_session",{"micros":89477,"calls":["api-prd-main-qgkw",{"micros":84889,"calls":["get_user",{"micros":9574},"add_authorized_ip",{"micros":8567},"get_guilds",{"micros":5699},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":6,"calls":[]},"presence_connect",{"micros":2,"calls":[]}]}]}])
