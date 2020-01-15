@@ -823,47 +823,51 @@ client:on("messageCreate", function(message)
 				for k, v in pairs(Rows) do
 					if(k == "Domain") then DomainName = v end
 				end
-			end
 
-			if(DomainName ~= nil and TargetUser.id ~= name and message.channel.guild:getMember(TargetUser.id) ~= nil) then
-				sql = "select Alliance from '" .. Guild .. "' Where ID='" .. TargetUser.id .. "' LIMIT 1"
-				local Rows,errorString = BattleDB:exec(sql)
-				local TargetAlliance
-
-				if errorString == 0 then
-					print("Error At Joining Alliance")
-				else
-					for k, v in pairs(Rows) do
-						if(k == "Alliance") then
-							TargetAlliance = v[1]
-						end
-					end
-				end
-
-				if(TargetAlliance ~= nil) then
-					sql = "select Members from '" .. Guild .. "' Where ID='" .. TargetUser.id .. "' LIMIT 1"
-					local Rows,errorString = BattleDB:exec(sql)
-					local AllianceMembers
-
-					if errorString == 0 then
-						print("Error At Joining Alliance 2")
-					else
-						for k, v in pairs(Rows) do
-							if(k == "Members") then
-								AllianceMembers = v[1]
+				if(TargetUser ~= nil) then
+					if(DomainName ~= nil and TargetUser.id ~= name and message.channel.guild:getMember(TargetUser.id) ~= nil) then
+						sql = "select Alliance from '" .. Guild .. "' Where ID='" .. TargetUser.id .. "' LIMIT 1"
+						local Rows,errorString = BattleDB:exec(sql)
+						local TargetAlliance
+		
+						if errorString == 0 then
+							print("Error At Joining Alliance")
+						else
+							for k, v in pairs(Rows) do
+								if(k == "Alliance") then
+									TargetAlliance = v[1]
+								end
 							end
 						end
+		
+						if(TargetAlliance ~= nil) then
+							sql = "select Members from '" .. Guild .. "' Where ID='" .. TargetUser.id .. "' LIMIT 1"
+							local Rows,errorString = BattleDB:exec(sql)
+							local AllianceMembers
+		
+							if errorString == 0 then
+								print("Error At Joining Alliance 2")
+							else
+								for k, v in pairs(Rows) do
+									if(k == "Members") then
+										AllianceMembers = v[1]
+									end
+								end
+							end
+							AllianceMembers = AllianceMembers .. name .. ","
+		
+							sql = "UPDATE '" .. Guild .. "' SET Members = '" .. AllianceMembers .. "' WHERE ID = '" .. TargetUser.id .. "';"
+							BattleDB:exec(sql)
+							message.channel:send("You Joined The alliance")
+						else
+							message.channel:send("Target User is not a Leader of an Alliance")
+						end
+					else
+						message.channel:send("You Can't Join Your Own Alliance or The alliance does not exist.You Also Need to Own A domain to join alliances")
 					end
-					AllianceMembers = AllianceMembers .. name .. ","
-
-					sql = "UPDATE '" .. Guild .. "' SET Members = '" .. AllianceMembers .. "' WHERE ID = '" .. TargetUser.id .. "';"
-					BattleDB:exec(sql)
-					message.channel:send("You Joined The alliance")
 				else
-					message.channel:send("Target User is not a Leader of an Alliance")
+					message.channel:send("Tag An User")
 				end
-			else
-				message.channel:send("You Can't Join Your Own Alliance or The alliance does not exist.You Also Need to Own A domain to join alliances")
 			end
 		elseif(string.lower(string.sub(message.content,2,5)) == "quit") then
 			local TargetUser = message.mentionedUsers.first
