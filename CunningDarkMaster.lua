@@ -825,7 +825,7 @@ client:on("messageCreate", function(message)
 				end
 			end
 
-			if(TargetUser.id ~= name and message.channel.guild:getMember(TargetUser.id) ~= nil and DomainName ~= nil) then
+			if(DomainName ~= nil and TargetUser.id ~= name and message.channel.guild:getMember(TargetUser.id) ~= nil) then
 				sql = "select Alliance from '" .. Guild .. "' Where ID='" .. TargetUser.id .. "' LIMIT 1"
 				local Rows,errorString = BattleDB:exec(sql)
 				local TargetAlliance
