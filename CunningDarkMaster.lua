@@ -213,31 +213,35 @@ client:on('messageCreate', function(message)
 							Prev = v[1]
 						end
 					end
-					--Calculate The Left Over Gold
-					local Sum = tonumber(Prev) - Coins
-					
-					sql = "select Coins from '" .. Guild .. "' Where ID='" .. Target .. "' LIMIT 1"
-					--Get the Coins in a Table of the guy being Payed
-					Rows,errorString = db:exec(sql)
+					if(Coins ~= nil) then 
+						--Calculate The Left Over Gold
+						local Sum = tonumber(Prev) - Coins
+						
+						sql = "select Coins from '" .. Guild .. "' Where ID='" .. Target .. "' LIMIT 1"
+						--Get the Coins in a Table of the guy being Payed
+						Rows,errorString = db:exec(sql)
 
-					for k, v in pairs(Rows) do
-						if(k == "Coins") then
-							New = v[1]
+						for k, v in pairs(Rows) do
+							if(k == "Coins") then
+								New = v[1]
+							end
 						end
-					end
-					--Check if The Guy Paying Can Afford it
-					if Sum > 0 then
-						sql = "UPDATE '" .. Guild .. "' SET Coins = " .. Sum .. " WHERE ID = " .. name .. ";"
-						--Update the Leftover Gold
-						db:exec(sql)
-						Sum = New + Coins
-						sql = "UPDATE '" .. Guild .. "' SET Coins = " .. Sum .. " WHERE ID = " .. Target .. ";"
-						--Update Money for the Guy Being Payed
-						db:exec(sql)
-						--Display the MSG
-						message.channel:send(AuthorMentionName .. " Payed " .. TargetMentionName .. " " .. Coins)
+						--Check if The Guy Paying Can Afford it
+						if Sum > 0 then
+							sql = "UPDATE '" .. Guild .. "' SET Coins = " .. Sum .. " WHERE ID = " .. name .. ";"
+							--Update the Leftover Gold
+							db:exec(sql)
+							Sum = New + Coins
+							sql = "UPDATE '" .. Guild .. "' SET Coins = " .. Sum .. " WHERE ID = " .. Target .. ";"
+							--Update Money for the Guy Being Payed
+							db:exec(sql)
+							--Display the MSG
+							message.channel:send(AuthorMentionName .. " Payed " .. TargetMentionName .. " " .. Coins)
+						else
+							message.channel:send("Not Enough Money")
+						end
 					else
-						message.channel:send("Not Enough Money")
+						message.channel:send("How Much?")
 					end
 				end
 			
