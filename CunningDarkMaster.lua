@@ -17,8 +17,11 @@ local WorldDB = sql.open("WorldDB.db")
 local MoneyDB = sql.open("MoneyDB.db")
 local BattleDB = sql.open("BattleDB.db")
 
-local sql = "PRAGMA journal_mode=WAL"
+local sql = "PRAGMA journal_mode=DELETE"
 db:exec(sql)
+
+local sql = "PRAGMA journal_mode=DELETE"
+WorldDB:exec(sql)
 
 --People that are on cooldown and should not get exp will be in this table
 local CooldownTable = {}
@@ -1161,7 +1164,7 @@ client:on("messageCreate", function(message)
 							keyset[n] = k
 						end
 						local unitchoice = math.random(#keyset)
-
+						
 						FriendlyTurns[i] = FriendlyTemplate[keyset[unitchoice]]
 						FriendlyAllianceTroops[FriendlyTemplate[keyset[unitchoice]]] = FriendlyAllianceTroops[FriendlyTemplate[keyset[unitchoice]]] - 1
 						if(FriendlyAllianceTroops[FriendlyTemplate[keyset[unitchoice]]] == 0) then
@@ -1238,7 +1241,7 @@ client:on("messageCreate", function(message)
 								FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[keyset[unitchoice]] .. " Survived" .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
 							end
 						else
-
+							print("ATTACK NO ENEMY UNIT")
 						end
 					elseif(EnemyTurns[i] ~= nil) then
 						local keyset = {}
@@ -1263,20 +1266,20 @@ client:on("messageCreate", function(message)
 								FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[keyset[unitchoice]] .. " Survived" .. " (" .. AttackRoll .. "," .. DefenseRoll .. ")\n"
 							end
 						else
-							
+							print("ATTACK NO ENEMY UNIT")
 						end
 					end
 				end
 			
-				local AverageFriendlyArcherLoss = FriendlyCasualities["archers"] / #FriendlyAllianceMemberIDs
-				local AverageFriendlySwordsmanLoss = FriendlyCasualities["swordsmen"] / #FriendlyAllianceMemberIDs
-				local AverageFriendlyCasterLoss = FriendlyCasualities["catapult"] / #FriendlyAllianceMemberIDs
-				local AverageFriendlyCavalryLoss = FriendlyCasualities["cavalry"] / #FriendlyAllianceMemberIDs
+				local AverageFriendlyArcherLoss = math.floor(FriendlyCasualities["archers"] / #FriendlyAllianceMemberIDs)
+				local AverageFriendlySwordsmanLoss = math.floor(FriendlyCasualities["swordsmen"] / #FriendlyAllianceMemberIDs)
+				local AverageFriendlyCasterLoss = math.floor(FriendlyCasualities["catapult"] / #FriendlyAllianceMemberIDs)
+				local AverageFriendlyCavalryLoss = math.floor(FriendlyCasualities["cavalry"] / #FriendlyAllianceMemberIDs)
 
-				local AverageEnemyArcherLoss = EnemyCasualities["archers"] / #EnemyAllianceMemberIDs
-				local AverageEnemySwordsmanLoss = EnemyCasualities["swordsmen"] / #EnemyAllianceMemberIDs
-				local AverageEnemyCasterLoss = EnemyCasualities["catapult"] / #EnemyAllianceMemberIDs
-				local AverageEnemyCavalryLoss = EnemyCasualities["cavalry"] / #EnemyAllianceMemberIDs
+				local AverageEnemyArcherLoss = math.floor(EnemyCasualities["archers"] / #EnemyAllianceMemberIDs)
+				local AverageEnemySwordsmanLoss = math.floor(EnemyCasualities["swordsmen"] / #EnemyAllianceMemberIDs)
+				local AverageEnemyCasterLoss = math.floor(EnemyCasualities["catapult"] / #EnemyAllianceMemberIDs)
+				local AverageEnemyCavalryLoss = math.floor(EnemyCasualities["cavalry"] / #EnemyAllianceMemberIDs)
 				
 				for i=1,#FriendlyAllianceMemberIDs do
 					local sql = "select Troops from '" .. Guild .. "' Where ID='" .. FriendlyAllianceMemberIDs[i] .. "' LIMIT 1"
@@ -1703,16 +1706,16 @@ client:on("messageCreate", function(message)
 				end
 				
 				local TotalFriendlyCasualties = FriendlyCasualities["archers"] + FriendlyCasualities["swordsmen"] + FriendlyCasualities["catapult"] + FriendlyCasualities["cavalry"]
-				local AverageFriendlyArcherLoss = FriendlyCasualities["archers"] / #FriendlyAllianceMemberIDs
-				local AverageFriendlySwordsmanLoss = FriendlyCasualities["swordsmen"] / #FriendlyAllianceMemberIDs
-				local AverageFriendlyCasterLoss = FriendlyCasualities["catapult"] / #FriendlyAllianceMemberIDs
-				local AverageFriendlyCavalryLoss = FriendlyCasualities["cavalry"] / #FriendlyAllianceMemberIDs
+				local AverageFriendlyArcherLoss = math.floor(FriendlyCasualities["archers"] / #FriendlyAllianceMemberIDs)
+				local AverageFriendlySwordsmanLoss = math.floor(FriendlyCasualities["swordsmen"] / #FriendlyAllianceMemberIDs)
+				local AverageFriendlyCasterLoss = math.floor(FriendlyCasualities["catapult"] / #FriendlyAllianceMemberIDs)
+				local AverageFriendlyCavalryLoss = math.floor(FriendlyCasualities["cavalry"] / #FriendlyAllianceMemberIDs)
 
 				local TotalEnemyTroopsCasualties = EnemyCasualities["archers"] + EnemyCasualities["swordsmen"] + EnemyCasualities["catapult"] + EnemyCasualities["cavalry"]
-				local AverageEnemyArcherLoss = EnemyCasualities["archers"] / #EnemyAllianceMemberIDs
-				local AverageEnemySwordsmanLoss = EnemyCasualities["swordsmen"] / #EnemyAllianceMemberIDs
-				local AverageEnemyCasterLoss = EnemyCasualities["catapult"] / #EnemyAllianceMemberIDs
-				local AverageEnemyCavalryLoss = EnemyCasualities["cavalry"] / #EnemyAllianceMemberIDs
+				local AverageEnemyArcherLoss = math.floor(EnemyCasualities["archers"] / #EnemyAllianceMemberIDs)
+				local AverageEnemySwordsmanLoss = math.floor(EnemyCasualities["swordsmen"] / #EnemyAllianceMemberIDs)
+				local AverageEnemyCasterLoss = math.floor(EnemyCasualities["catapult"] / #EnemyAllianceMemberIDs)
+				local AverageEnemyCavalryLoss = math.floor(EnemyCasualities["cavalry"] / #EnemyAllianceMemberIDs)
 				
 				for i=1,#FriendlyAllianceMemberIDs do
 					local sql = "select Troops from '" .. Guild .. "' Where ID='" .. FriendlyAllianceMemberIDs[i] .. "' LIMIT 1"
@@ -1803,7 +1806,7 @@ client:on("messageCreate", function(message)
 								Prev = v[1]
 							end
 						end
-						local coins =  Prev * 3/4
+						local coins =  math.floor(Prev * 3/4)
 						--Calculate The Left Over Gold
 						local Sum = tonumber(Prev) - coins
 						

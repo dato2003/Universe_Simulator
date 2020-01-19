@@ -5368,3 +5368,151 @@
 2020-01-13 16:13:47 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
 2020-01-13 16:13:47 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-zjmn",{"micros":0.0}])
 2020-01-13 16:13:47 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-zjmn",{"micros":103405,"calls":["discord-sessions-prd-1-21",{"micros":96814,"calls":["start_session",{"micros":89477,"calls":["api-prd-main-qgkw",{"micros":84889,"calls":["get_user",{"micros":9574},"add_authorized_ip",{"micros":8567},"get_guilds",{"micros":5699},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":6,"calls":[]},"presence_connect",{"micros":2,"calls":[]}]}]}])
+2020-01-18 16:49:11 | [INFO]    | Discordia 2.6.0
+2020-01-18 16:49:11 | [INFO]    | Connecting to Discord...
+2020-01-18 16:49:11 | [ERROR]   | 401 - UNAUTHORIZED : GET https://discordapp.com/api/v7/users/@me
+2020-01-18 16:49:11 | [ERROR]   | Could not authenticate, check token: HTTP Error 0 : 401: Unauthorized
+2020-01-18 16:50:28 | [INFO]    | Discordia 2.6.0
+2020-01-18 16:50:28 | [INFO]    | Connecting to Discord...
+2020-01-18 16:50:29 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 16:50:29 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 16:50:29 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 16:50:29 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-nmk1",{"micros":0.0}])
+2020-01-18 16:50:30 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-nmk1",{"micros":42566,"calls":["discord-sessions-prd-1-4",{"micros":36016,"calls":["start_session",{"micros":34589,"calls":["api-prd-main-mmj0",{"micros":31972,"calls":["get_user",{"micros":2367},"add_authorized_ip",{"micros":2116},"get_guilds",{"micros":2051},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":611,"calls":[]}]}]}])
+2020-01-18 17:00:07 | [INFO]    | Discordia 2.6.0
+2020-01-18 17:00:07 | [INFO]    | Connecting to Discord...
+2020-01-18 17:00:08 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 17:00:08 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 17:00:08 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 17:00:08 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-h0zh",{"micros":0.0}])
+2020-01-18 17:00:09 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-h0zh",{"micros":53967,"calls":["discord-sessions-prd-1-23",{"micros":40134,"calls":["start_session",{"micros":37200,"calls":["api-prd-main-jf2q",{"micros":33623,"calls":["get_user",{"micros":3218},"add_authorized_ip",{"micros":2852},"get_guilds",{"micros":3429},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":3,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-18 17:06:16 | [INFO]    | Discordia 2.6.0
+2020-01-18 17:06:16 | [INFO]    | Connecting to Discord...
+2020-01-18 17:06:17 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 17:06:17 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 17:06:17 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 17:06:17 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-cp9z",{"micros":0.0}])
+2020-01-18 17:06:17 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-cp9z",{"micros":54231,"calls":["discord-sessions-prd-1-17",{"micros":51389,"calls":["start_session",{"micros":48619,"calls":["api-prd-main-bdvq",{"micros":45471,"calls":["get_user",{"micros":2646},"add_authorized_ip",{"micros":1605},"get_guilds",{"micros":20313},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":8,"calls":[]},"presence_connect",{"micros":1721,"calls":[]}]}]}])
+2020-01-18 18:10:53 | [INFO]    | Discordia 2.6.0
+2020-01-18 18:10:53 | [INFO]    | Connecting to Discord...
+2020-01-18 18:10:53 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 18:10:54 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 18:10:54 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 18:10:54 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-h2sl",{"micros":0.0}])
+2020-01-18 18:10:54 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-h2sl",{"micros":58719,"calls":["discord-sessions-prd-1-11",{"micros":56834,"calls":["start_session",{"micros":55131,"calls":["api-prd-main-jh6n",{"micros":50420,"calls":["get_user",{"micros":4811},"add_authorized_ip",{"micros":8746},"get_guilds",{"micros":2196},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":770,"calls":[]}]}]}])
+2020-01-18 18:29:16 | [INFO]    | Discordia 2.6.0
+2020-01-18 18:29:16 | [INFO]    | Connecting to Discord...
+2020-01-18 18:29:16 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 18:29:16 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 18:29:17 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 18:29:17 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-h1x7",{"micros":0.0}])
+2020-01-18 18:29:17 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-h1x7",{"micros":44369,"calls":["discord-sessions-prd-1-23",{"micros":40825,"calls":["start_session",{"micros":36304,"calls":["api-prd-main-sp8d",{"micros":29560,"calls":["get_user",{"micros":2628},"add_authorized_ip",{"micros":1680},"get_guilds",{"micros":1728},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-18 18:30:18 | [WARNING] | Shard 0 : 1000 - Connection closed
+2020-01-18 18:30:19 | [INFO]    | Shard 0 : Disconnected
+2020-01-18 18:30:19 | [INFO]    | Shard 0 : Reconnecting after 954 ms...
+2020-01-18 18:30:19 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 18:30:19 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-l2z5",{"micros":0.0}])
+2020-01-18 18:30:19 | [INFO]    | Shard 0 : Received RESUMED (["gateway-prd-main-l2z5",{"micros":5598,"calls":["discord-sessions-prd-1-23",{"micros":50}]}])
+2020-01-18 18:31:57 | [INFO]    | Discordia 2.6.0
+2020-01-18 18:31:57 | [INFO]    | Connecting to Discord...
+2020-01-18 18:31:57 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 18:31:58 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 18:31:58 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 18:31:58 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-vlf3",{"micros":0.0}])
+2020-01-18 18:31:58 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-vlf3",{"micros":99934,"calls":["discord-sessions-prd-1-18",{"micros":90465,"calls":["start_session",{"micros":86753,"calls":["api-prd-main-m9nw",{"micros":80390,"calls":["get_user",{"micros":5367},"add_authorized_ip",{"micros":5610},"get_guilds",{"micros":7929},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":2,"calls":[]}]}]}])
+2020-01-18 18:34:51 | [INFO]    | Discordia 2.6.0
+2020-01-18 18:34:51 | [INFO]    | Connecting to Discord...
+2020-01-18 18:34:52 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 18:34:52 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 18:34:52 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 18:34:52 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-7r6k",{"micros":0.0}])
+2020-01-18 18:34:52 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-7r6k",{"micros":47087,"calls":["discord-sessions-prd-1-31",{"micros":44350,"calls":["start_session",{"micros":42235,"calls":["api-prd-main-sklq",{"micros":39813,"calls":["get_user",{"micros":2263},"add_authorized_ip",{"micros":3137},"get_guilds",{"micros":3063},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-18 18:38:52 | [INFO]    | Discordia 2.6.0
+2020-01-18 18:38:52 | [INFO]    | Connecting to Discord...
+2020-01-18 18:38:53 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 18:38:53 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 18:38:53 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 18:38:53 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-70sw",{"micros":0.0}])
+2020-01-18 18:38:54 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-70sw",{"micros":46128,"calls":["discord-sessions-prd-1-31",{"micros":43364,"calls":["start_session",{"micros":41854,"calls":["api-prd-main-7qmg",{"micros":38831,"calls":["get_user",{"micros":4479},"add_authorized_ip",{"micros":1951},"get_guilds",{"micros":3086},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":223,"calls":[]}]}]}])
+2020-01-18 19:02:40 | [INFO]    | Discordia 2.6.0
+2020-01-18 19:02:40 | [INFO]    | Connecting to Discord...
+2020-01-18 19:02:41 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 19:02:41 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 19:02:42 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 19:02:42 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-3lw3",{"micros":0.0}])
+2020-01-18 19:02:42 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-3lw3",{"micros":215328,"calls":["discord-sessions-prd-1-13",{"micros":210738,"calls":["start_session",{"micros":208420,"calls":["api-prd-main-pzcl",{"micros":175684,"calls":["get_user",{"micros":39870},"add_authorized_ip",{"micros":7500},"get_guilds",{"micros":14540},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-18 19:04:30 | [INFO]    | Discordia 2.6.0
+2020-01-18 19:04:30 | [INFO]    | Connecting to Discord...
+2020-01-18 19:04:31 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 19:04:31 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 19:04:31 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 19:04:31 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-0rxk",{"micros":0.0}])
+2020-01-18 19:04:31 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-0rxk",{"micros":63299,"calls":["discord-sessions-prd-1-12",{"micros":61428,"calls":["start_session",{"micros":55933,"calls":["api-prd-main-hq88",{"micros":53323,"calls":["get_user",{"micros":3924},"add_authorized_ip",{"micros":1309},"get_guilds",{"micros":18741},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":3,"calls":[]},"presence_connect",{"micros":4,"calls":[]}]}]}])
+2020-01-18 19:06:11 | [INFO]    | Discordia 2.6.0
+2020-01-18 19:06:12 | [INFO]    | Connecting to Discord...
+2020-01-18 19:06:12 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 19:06:13 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 19:06:13 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 19:06:13 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-1h15",{"micros":0.0}])
+2020-01-18 19:06:14 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-1h15",{"micros":78041,"calls":["discord-sessions-prd-1-34",{"micros":76263,"calls":["start_session",{"micros":73105,"calls":["api-prd-main-jf7p",{"micros":66734,"calls":["get_user",{"micros":3430},"add_authorized_ip",{"micros":3676},"get_guilds",{"micros":3520},"coros_wait",{"micros":3}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":0,"calls":[]}]}]}])
+2020-01-18 19:25:08 | [INFO]    | Discordia 2.6.0
+2020-01-18 19:25:08 | [INFO]    | Connecting to Discord...
+2020-01-18 19:25:08 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 19:25:09 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 19:25:10 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 19:25:10 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-cp9z",{"micros":0.0}])
+2020-01-18 19:25:10 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-cp9z",{"micros":38969,"calls":["discord-sessions-prd-1-33",{"micros":37654,"calls":["start_session",{"micros":35285,"calls":["api-prd-main-6gh2",{"micros":30956,"calls":["get_user",{"micros":2599},"add_authorized_ip",{"micros":1863},"get_guilds",{"micros":1946},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-18 19:37:28 | [INFO]    | Discordia 2.6.0
+2020-01-18 19:37:28 | [INFO]    | Connecting to Discord...
+2020-01-18 19:37:29 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 19:37:29 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 19:37:29 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 19:37:29 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-jnl6",{"micros":0.0}])
+2020-01-18 19:37:29 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-jnl6",{"micros":82259,"calls":["discord-sessions-prd-1-13",{"micros":80600,"calls":["start_session",{"micros":67958,"calls":["api-prd-main-p04v",{"micros":57909,"calls":["get_user",{"micros":3989},"add_authorized_ip",{"micros":3309},"get_guilds",{"micros":2993},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":2,"calls":[]}]}]}])
+2020-01-18 19:39:43 | [INFO]    | Discordia 2.6.0
+2020-01-18 19:39:43 | [INFO]    | Connecting to Discord...
+2020-01-18 19:39:44 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 19:39:44 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 19:39:44 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 19:39:44 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-s406",{"micros":0.0}])
+2020-01-18 19:39:44 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-s406",{"micros":86032,"calls":["discord-sessions-prd-1-10",{"micros":81997,"calls":["start_session",{"micros":76800,"calls":["api-prd-main-x1dj",{"micros":73312,"calls":["get_user",{"micros":16913},"add_authorized_ip",{"micros":4285},"get_guilds",{"micros":7628},"coros_wait",{"micros":3}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":3246,"calls":[]}]}]}])
+2020-01-18 19:43:57 | [INFO]    | Discordia 2.6.0
+2020-01-18 19:43:57 | [INFO]    | Connecting to Discord...
+2020-01-18 19:43:57 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 19:43:57 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 19:43:58 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 19:43:58 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-ssdf",{"micros":0.0}])
+2020-01-18 19:43:58 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-ssdf",{"micros":46063,"calls":["discord-sessions-prd-1-22",{"micros":41063,"calls":["start_session",{"micros":32435,"calls":["api-prd-main-tf1v",{"micros":29744,"calls":["get_user",{"micros":3211},"add_authorized_ip",{"micros":2010},"get_guilds",{"micros":1696},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-18 19:54:54 | [WARNING] | Shard 0 : Unhandled gateway event: INVITE_CREATE
+2020-01-18 20:05:42 | [INFO]    | Discordia 2.6.0
+2020-01-18 20:05:42 | [INFO]    | Connecting to Discord...
+2020-01-18 20:05:42 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 20:05:42 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 20:05:43 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 20:05:43 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-1l3c",{"micros":0.0}])
+2020-01-18 20:05:43 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-1l3c",{"micros":138080,"calls":["discord-sessions-prd-1-14",{"micros":134786,"calls":["start_session",{"micros":130846,"calls":["api-prd-main-k2t7",{"micros":127291,"calls":["get_user",{"micros":2477},"add_authorized_ip",{"micros":2770},"get_guilds",{"micros":30142},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":0,"calls":[]}]}]}])
+2020-01-18 20:13:56 | [INFO]    | Discordia 2.6.0
+2020-01-18 20:13:56 | [INFO]    | Connecting to Discord...
+2020-01-18 20:13:57 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 20:13:57 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 20:13:57 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 20:13:57 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-2kqn",{"micros":0.0}])
+2020-01-18 20:13:57 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-2kqn",{"micros":44456,"calls":["discord-sessions-prd-1-18",{"micros":40622,"calls":["start_session",{"micros":35638,"calls":["api-prd-main-jf7p",{"micros":30819,"calls":["get_user",{"micros":2309},"add_authorized_ip",{"micros":1466},"get_guilds",{"micros":2923},"coros_wait",{"micros":2}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-18 20:22:36 | [INFO]    | Discordia 2.6.0
+2020-01-18 20:22:36 | [INFO]    | Connecting to Discord...
+2020-01-18 20:22:36 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 20:22:36 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 20:22:37 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 20:22:37 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-7l95",{"micros":0.0}])
+2020-01-18 20:22:37 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-7l95",{"micros":56248,"calls":["discord-sessions-prd-1-4",{"micros":53410,"calls":["start_session",{"micros":51025,"calls":["api-prd-main-0pjc",{"micros":46224,"calls":["get_user",{"micros":4657},"add_authorized_ip",{"micros":4629},"get_guilds",{"micros":5026},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}])
+2020-01-18 21:04:14 | [ERROR]   | 502 - Bad Gateway : POST https://discordapp.com/api/v7/channels/662969365188050944/messages
+2020-01-18 21:14:35 | [WARNING] | Shard 0 : Unhandled gateway event: INVITE_CREATE
+2020-01-18 21:27:18 | [INFO]    | Discordia 2.6.0
+2020-01-18 21:27:18 | [INFO]    | Connecting to Discord...
+2020-01-18 21:27:18 | [INFO]    | Authenticated as Cunning Dark Master#7650
+2020-01-18 21:27:19 | [INFO]    | Launching shard 0 (1 out of 1)...
+2020-01-18 21:27:19 | [INFO]    | Shard 0 : Connected to wss://gateway.discord.gg
+2020-01-18 21:27:19 | [INFO]    | Shard 0 : Received HELLO (["gateway-prd-main-1s9b",{"micros":0.0}])
+2020-01-18 21:27:20 | [INFO]    | Shard 0 : Received READY (["gateway-prd-main-1s9b",{"micros":101578,"calls":["discord-sessions-prd-1-22",{"micros":98370,"calls":["start_session",{"micros":97240,"calls":["api-prd-main-scsv",{"micros":93671,"calls":["get_user",{"micros":3916},"add_authorized_ip",{"micros":3743},"get_guilds",{"micros":4439},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":2,"calls":[]}]}]}])
+2020-01-18 22:39:21 | [ERROR]   | 500 - INTERNAL SERVER ERROR : POST https://discordapp.com/api/v7/channels/626450874398539791/messages
+2020-01-18 22:40:44 | [ERROR]   | 500 - INTERNAL SERVER ERROR : POST https://discordapp.com/api/v7/channels/626450874398539791/messages
