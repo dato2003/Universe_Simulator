@@ -960,6 +960,8 @@ client:on("messageCreate", function(message)
 				local EnemyAllianceMembers,FriendlyAllianceMembers,EnemyAllianceName,FriendlyAllianceName
 				local FriendlyCastleTier
 				local EnemyCastleTier
+				local EnemyAllianceMembers,FriendlyAllianceMembers
+				local EnemyAllianceMemberIDs,FriendlyAllianceMemberIDs
 
 				local sql = "select Castle from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
 				local Rows,errorString = WorldDB:exec(sql)
@@ -1025,10 +1027,6 @@ client:on("messageCreate", function(message)
 						end
 					end
 				end
-
-
-				local EnemyAllianceMembers,FriendlyAllianceMembers
-				local EnemyAllianceMemberIDs,FriendlyAllianceMemberIDs
 
 				local FriendlyAllianceTroops
 				local EnemyAllianceTroops
@@ -1098,6 +1096,7 @@ client:on("messageCreate", function(message)
 				if(EnemyAllianceMembers == nil) then
 					EnemyAllianceMemberIDs = {Target.id}
 					EnemyAllianceTroops = GetAllianceTroops({Target.id},Guild)
+					print("ENEMY ALLIANCE NILL")
 				end
 				if(FriendlyAllianceMembers == nil) then
 					FriendlyAllianceMemberIDs = {name}
