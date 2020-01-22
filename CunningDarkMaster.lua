@@ -1227,8 +1227,8 @@ client:on("messageCreate", function(message)
 						end
 						local unitchoice = math.random(#keyset)
 						if(keyset[unitchoice] ~= nil) then
-							local AttackRoll = math.random(20) + UnitsWiki2[FriendlyTurns[i]][1] + (2 * FriendlyCastleTier)
-							local DefenseRoll = math.random(20) + UnitsWiki2[EnemyTurns[keyset[unitchoice]]][2] + (2 * EnemyCastleTier)
+							local AttackRoll = math.random(20) + UnitsWiki2[FriendlyTurns[i]][1] + FriendlyCastleTier
+							local DefenseRoll = math.random(20) + UnitsWiki2[EnemyTurns[keyset[unitchoice]]][2] + EnemyCastleTier
 							--print("Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]])
 							FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]] .. "\n"
 							if(AttackRoll > DefenseRoll) then
@@ -1252,8 +1252,8 @@ client:on("messageCreate", function(message)
 						end
 						local unitchoice = math.random(#keyset)
 						if(keyset[unitchoice] ~= nil) then
-							local AttackRoll = math.random(20) + UnitsWiki2[EnemyTurns[i]][1] + (2 * EnemyCastleTier)
-							local DefenseRoll = math.random(20) + UnitsWiki2[FriendlyTurns[keyset[unitchoice]]][2] + (2 * FriendlyCastleTier)
+							local AttackRoll = math.random(20) + UnitsWiki2[EnemyTurns[i]][1] + EnemyCastleTier
+							local DefenseRoll = math.random(20) + UnitsWiki2[FriendlyTurns[keyset[unitchoice]]][2] + FriendlyCastleTier
 							--print("Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]])
 							FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]] .. "\n"
 							if(AttackRoll > DefenseRoll) then
@@ -1661,8 +1661,8 @@ client:on("messageCreate", function(message)
 						end
 						local unitchoice = math.random(#keyset)
 						if(keyset[unitchoice] ~= nil) then
-							local AttackRoll = math.random(20) + UnitsWiki2[FriendlyTurns[i]][1] + (2 * FriendlyCastleTier)
-							local DefenseRoll = math.random(20) + UnitsWiki2[EnemyTurns[keyset[unitchoice]]][2] + (2 * EnemyWallsTier) + (2 * EnemyCastleTier)
+							local AttackRoll = math.random(20) + UnitsWiki2[FriendlyTurns[i]][1] + FriendlyCastleTier
+							local DefenseRoll = math.random(20) + UnitsWiki2[EnemyTurns[keyset[unitchoice]]][2] + (2 * EnemyWallsTier) + EnemyCastleTier
 							--print("Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]])
 							FightTranscript = FightTranscript .. "Friendly " .. FriendlyTurns[i] .. " VS Enemy " .. EnemyTurns[keyset[unitchoice]] .. "\n"
 							if(AttackRoll > DefenseRoll) then
@@ -1686,8 +1686,8 @@ client:on("messageCreate", function(message)
 						end
 						local unitchoice = math.random(#keyset)
 						if(keyset[unitchoice] ~= nil) then
-							local AttackRoll = math.random(20) + UnitsWiki2[EnemyTurns[i]][1] + (2 * EnemyWallsTier) + (2 * EnemyCastleTier)
-							local DefenseRoll = math.random(20) + UnitsWiki2[FriendlyTurns[keyset[unitchoice]]][2] + (2 * FriendlyCastleTier)
+							local AttackRoll = math.random(20) + UnitsWiki2[EnemyTurns[i]][1] + (2 * EnemyWallsTier) + EnemyCastleTier
+							local DefenseRoll = math.random(20) + UnitsWiki2[FriendlyTurns[keyset[unitchoice]]][2] + FriendlyCastleTier
 							--print("Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]])
 							FightTranscript = FightTranscript .. "Enemy " .. EnemyTurns[i] .. " VS Friendly " .. FriendlyTurns[keyset[unitchoice]] .. "\n"
 							if(AttackRoll > DefenseRoll) then
