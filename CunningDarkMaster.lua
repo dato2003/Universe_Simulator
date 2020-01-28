@@ -216,7 +216,7 @@ client:on('messageCreate', function(message)
 							Prev = v[1]
 						end
 					end
-					if(Coins ~= nil and Coins > 0) then 
+					if(Coins ~= nil and Coins > 0 and Target ~= author) then 
 						--Calculate The Left Over Gold
 						local Sum = tonumber(Prev) - Coins
 						
@@ -925,7 +925,7 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You need to tag a user to quit alliance from")
 			end
-		elseif(string.lower(string.sub(message.content,2,7)) == "attack" and message.mentionedUsers.first ~= nil) then
+		elseif(string.lower(string.sub(message.content,2,7)) == "attack" and message.mentionedUsers.first ~= nil and message.mentionedUsers.first.id ~= author) then
 			print("Normal")
 			local Target = message.mentionedUsers.first
 			local EnemyDomain,FriendlyDomain
@@ -1369,7 +1369,7 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You and the Enemy Both Must Have a Domain (get one by .getdomain)")
 			end
-		elseif(string.lower(string.sub(message.content,2,13)) == "domainattack" and message.mentionedUsers.first ~= nil) then
+		elseif(string.lower(string.sub(message.content,2,13)) == "domainattack" and message.mentionedUsers.first ~= nil and message.mentionedUsers.first.id ~= author) then
 			local Target = message.mentionedUsers.first
 			local EnemyDomain,FriendlyDomain
 			
