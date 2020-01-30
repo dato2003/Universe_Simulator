@@ -216,7 +216,7 @@ client:on('messageCreate', function(message)
 							Prev = v[1]
 						end
 					end
-					if(Coins ~= nil and Coins > 0 and Target ~= author) then 
+					if(Coins ~= nil and Coins > 0 and Target ~= name) then 
 						--Calculate The Left Over Gold
 						local Sum = tonumber(Prev) - Coins
 						
