@@ -156,7 +156,8 @@ local UnitsWiki2 = {
 	["cavalry"] = {5,3},
 }
 
-
+local AttackQueue = {}
+local AcceptedQueue = {}
 
 client:on('messageCreate', function(message)
 	local name = message.author.id
@@ -166,7 +167,7 @@ client:on('messageCreate', function(message)
 	sql = "CREATE TABLE IF NOT EXISTS '" .. Guild .. "' (ID TEXT, Coins TEXT)"
 	db:exec(sql)
 
-	if(name ~= "643070824403959808" and string.sub(message.content,1,1) == ">") then
+	if(name ~= "643070824403959808" and string.sub(message.content,1,1) == ".") then
 		--IF command is >treasury or >Treasury
 		if(string.lower(string.sub(message.content,2,#message.content)) == "treasury") then
 			local body = AuthorMentionName .. ":"
@@ -206,8 +207,8 @@ client:on('messageCreate', function(message)
 				--Get Coins in a table
 				local Rows,errorString = db:exec(sql)
 				--IF There is no such ID in DB Send back sending that it's 0.it will insert it later
-				if errorString == 0 then
-					message.channel:send("No Money")
+				if errorString == 0 or Rows == nil then
+					message.channel:send("No Money or Recipient is not Registered")
 				else
 					local Prev,New
 					--Get The Coins of The Guy Paying
@@ -223,25 +224,28 @@ client:on('messageCreate', function(message)
 						sql = "select Coins from '" .. Guild .. "' Where ID='" .. Target .. "' LIMIT 1"
 						--Get the Coins in a Table of the guy being Payed
 						Rows,errorString = db:exec(sql)
-
-						for k, v in pairs(Rows) do
-							if(k == "Coins") then
-								New = v[1]
+						if(Rows ~= nil) then
+							for k, v in pairs(Rows) do
+								if(k == "Coins") then
+									New = v[1]
+								end
 							end
-						end
-						--Check if The Guy Paying Can Afford it
-						if Sum > 0 then
-							sql = "UPDATE '" .. Guild .. "' SET Coins = " .. Sum .. " WHERE ID = " .. name .. ";"
-							--Update the Leftover Gold
-							db:exec(sql)
-							Sum = New + Coins
-							sql = "UPDATE '" .. Guild .. "' SET Coins = " .. Sum .. " WHERE ID = " .. Target .. ";"
-							--Update Money for the Guy Being Payed
-							db:exec(sql)
-							--Display the MSG
-							message.channel:send(AuthorMentionName .. " Payed " .. TargetMentionName .. " " .. Coins)
+							--Check if The Guy Paying Can Afford it
+							if Sum > 0 then
+								sql = "UPDATE '" .. Guild .. "' SET Coins = " .. Sum .. " WHERE ID = " .. name .. ";"
+								--Update the Leftover Gold
+								db:exec(sql)
+								Sum = New + Coins
+								sql = "UPDATE '" .. Guild .. "' SET Coins = " .. Sum .. " WHERE ID = " .. Target .. ";"
+								--Update Money for the Guy Being Payed
+								db:exec(sql)
+								--Display the MSG
+								message.channel:send(AuthorMentionName .. " Payed " .. TargetMentionName .. " " .. Coins)
+							else
+								message.channel:send("Not Enough Money")
+							end
 						else
-							message.channel:send("Not Enough Money")
+							message.channel:send("User is not Registered")
 						end
 					else
 						message.channel:send("How Much?")
@@ -270,7 +274,7 @@ client:on('messageCreate', function(message)
 				end
 			end
 			--Calculate New Coins
-			New = tonumber(Prev) + math.random(0.2,0.5)
+			New = tonumber(Prev) + math.random(0.2,2)
 			sql = "UPDATE '" .. Guild .. "' SET Coins = " .. New .. " WHERE ID = " .. name .. ";"
 			--Update The New Number of Coins in the DB
 			db:exec(sql)
@@ -310,9 +314,12 @@ client:on('messageCreate', function(message)
                     	end
                 	end
 
-                	if(tonumber(Money) >= 200) then
-                    	WorldDB:exec("insert into '" .. Guild .. "' (ID,Domain,Walls,Castle,Tavern,Training_Ground,Troops) values('" .. name .. "','" .. Domain .."',0,0,0,0,'" .. Troops .."');")
-						message.channel:send("You Pleased Me. Here Have This Land")
+                	if(tonumber(Money) >= 0) then
+						WorldDB:exec("insert into '" .. Guild .. "' (ID,Domain,Walls,Castle,Tavern,Training_Ground,Troops) values('" .. name .. "','" .. Domain .."',0,0,0,0,'" .. Troops .."');")
+						local NewCoins = Money + 100
+						sql = "UPDATE '" .. Guild .. "' SET Coins = " .. NewCoins .. " WHERE ID = " .. name .. ";"
+						MoneyDB:exec(sql)	
+						message.channel:send("Welcome to the World Stage, Go forth and Conquer")
 					else
 						message.channel:send("Not Enough Money Bastard")
 					end
@@ -334,7 +341,7 @@ client:on('messageCreate', function(message)
 			local Rows,errorString = WorldDB:exec(sql)
 			if errorString == 0 then
 				HasDomain = 1
-				message.channel:send("Buy Piece Of Land For 200 Gold.(.getdomain)")
+				message.channel:send("Buy Piece Of Land.(.getdomain)")
 			else
 				--Get The Coins
 				for k, v in pairs(Rows) do
@@ -443,7 +450,7 @@ client:on('messageCreate', function(message)
 						local NewWallTier = WallTiers + 1
 						sql = "UPDATE '" .. Guild .. "' SET Walls = " .. NewWallTier .. " WHERE ID = " .. name .. ";"
 						WorldDB:exec(sql)
-						message.channel:send("You Have Upgraded " .. Target)
+						message.channel:send("You Have Upgraded " .. Target .. " Leftover Gold:" .. LeftoverGold)
 					else
 						message.channel:send("Not Enough Money or you reached max upgrade limit")
 					end
@@ -456,7 +463,7 @@ client:on('messageCreate', function(message)
 						local NewCastleTier = CastleTiers + 1
 						sql = "UPDATE '" .. Guild .. "' SET Castle = " .. NewCastleTier .. " WHERE ID = " .. name .. ";"
 						WorldDB:exec(sql)
-						message.channel:send("You Have Upgraded " .. Target)
+						message.channel:send("You Have Upgraded " .. Target .. " Leftover Gold:" .. LeftoverGold)
 					else
 						message.channel:send("Not Enough Money or you reached max upgrade limit")
 					end
@@ -469,7 +476,7 @@ client:on('messageCreate', function(message)
 						local NewTavernTier = TavernTiers + 1
 						sql = "UPDATE '" .. Guild .. "' SET Tavern = " .. NewTavernTier .. " WHERE ID = " .. name .. ";"
 						WorldDB:exec(sql)
-						message.channel:send("You Have Upgraded " .. Target)
+						message.channel:send("You Have Upgraded " .. Target .. " Leftover Gold:" .. LeftoverGold)
 					else
 						message.channel:send("Not Enough Money or you reached max upgrade limit")
 					end
@@ -483,7 +490,7 @@ client:on('messageCreate', function(message)
 						local NewTrainingGroundsTier = TrainingGroundTiers + 1
 						sql = "UPDATE '" .. Guild .. "' SET Training_Ground = " .. NewTrainingGroundsTier .. " WHERE ID = " .. name .. ";"
 						WorldDB:exec(sql)
-						message.channel:send("You Have Upgraded " .. Target)
+						message.channel:send("You Have Upgraded " .. Target .. " Leftover Gold:" .. LeftoverGold)
 					else
 						message.channel:send("Not Enough Money or you reached max upgrade limit")
 					end
@@ -499,7 +506,7 @@ client:on('messageCreate', function(message)
 			local Rows,errorString = WorldDB:exec(sql)
 			if errorString == 0 then
 				HasDomain = 1
-				message.channel:send("Buy Piece Of Land For 200 Gold.(.getdomain)")
+				message.channel:send("Buy Piece Of Land.(.getdomain)")
 			else
 				--Get The Coins
 				for k, v in pairs(Rows) do
@@ -523,7 +530,7 @@ client:on('messageCreate', function(message)
 						end
 					end
 				end
-				Capacity = Tier * 30
+				Capacity = Tier * 50
 				local Troops = GetTroops(TroopsData)
 				local TotalTroopsNumber = 0,Coins
 
@@ -573,7 +580,7 @@ client:on('messageCreate', function(message)
 			local Rows,errorString = WorldDB:exec(sql)
 			if errorString == 0 then
 				HasDomain = 1
-				message.channel:send("Buy Piece Of Land For 200 Gold.(.getdomain)")
+				message.channel:send("Buy Piece Of Land.(.getdomain)")
 			else
 				--Get The Coins
 				for k, v in pairs(Rows) do
@@ -611,7 +618,7 @@ client:on('messageCreate', function(message)
 						end
 					end
 				end
-				Capacity = Tier * 30
+				Capacity = Tier * 50
 
 				message.channel:send{embed = {
 					title = "Army of " .. message.author.name,
@@ -638,7 +645,7 @@ client:on('messageCreate', function(message)
 			local TavernTier
 
 			if errorString == 0 then
-				print("Gold Entry Does not exist in the MoneyDB")
+				print("Tavern Entry Does not exist in the MoneyDB")
 			else
 				for k, v in pairs(Rows) do
 					if(k == "Tavern") then
@@ -662,7 +669,7 @@ client:on('messageCreate', function(message)
 						end
 					end
 
-					local NewCoins = PrevCoins + TavernTier * 30
+					local NewCoins = PrevCoins + TavernTier * 60
 					sql = "UPDATE '" .. Guild .. "' SET Coins = " .. NewCoins .. " WHERE ID = " .. name .. ";"
 					MoneyDB:exec(sql)
 
@@ -674,7 +681,7 @@ client:on('messageCreate', function(message)
  					end
 
 					timer.setTimeout(21600000,Cooldown2,name,Guild)
-					message.channel:send("You Collected " .. TavernTier * 30 .. " Coins in Taxes")
+					message.channel:send("You Collected " .. TavernTier * 60 .. " Coins in Taxes")
 				else
 					message.channel:send("You Don't Have A Tavern")
 				end
@@ -693,7 +700,7 @@ client:on("messageCreate", function(message)
 	local sql = "CREATE TABLE IF NOT EXISTS '" .. Guild .. "' (ID TEXT,Alliance TEXT,Members TEXT)"
 	BattleDB:exec(sql)
 
-	if(name ~= "485447275586519062" and string.sub(message.content,1,1) == "|") then
+	if(name ~= "485447275586519062" and string.sub(message.content,1,1) == ".") then
 		if(string.lower(string.sub(message.content,2,15)) == "createalliance") then
 			sql = "select Alliance from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
 			local Rows,errorString = BattleDB:exec(sql)
@@ -925,8 +932,32 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You need to tag a user to quit alliance from")
 			end
-		elseif(string.lower(string.sub(message.content,2,7)) == "attack" and message.mentionedUsers.first ~= nil and message.mentionedUsers.first.id ~= author) then
-			print("Normal")
+		elseif(string.lower(string.sub(message.content,2,13)) == "submitattack" and message.mentionedUsers.first ~= nil and message.mentionedUsers.first.id ~= author) then
+			if(AttackQueue[name] == nil) then
+				AttackQueue[name] = message.mentionedUsers.first.id
+				print("Worked 1")
+				message.channel:send(message.mentionedUsers.first.mentionString .. " is Challenged to a field battle by " .. message.author.mentionString)
+			else
+				message.channel:send("You Already have a challenge Pending")
+			end
+		elseif(string.lower(string.sub(message.content,2,13)) == "cancelattack" and message.mentionedUsers.first ~= nil and message.mentionedUsers.first.id ~= author) then
+			if(AttackQueue[name] ~= nil) then
+				AttackQueue[name] = nil
+				print("Worked 2")
+				message.channel:send(message.author.mentionString .. " Cancelled the field battle challenge against " .. message.mentionedUsers.first.mentionString)
+			else
+				message.channel:send("You Don't have a challenge pending")
+			end
+		elseif(string.lower(string.sub(message.content,2,13)) == "acceptattack" and message.mentionedUsers.first ~= nil and message.mentionedUsers.first.id ~= author) then
+			if(AttackQueue[message.mentionedUsers.first.id] == name) then
+				AcceptedQueue[message.mentionedUsers.first.id] = name
+				AttackQueue[message.mentionedUsers.first.id] = nil
+				print("Worked 3")
+				message.channel:send(message.mentionedUsers.first.mentionString .. "'s challenge was accepted by " .. message.author.mentionString)
+			else
+				message.channel:send("You don't have a pending challenge from that lord")
+			end
+		elseif(string.lower(string.sub(message.content,2,7)) == "attack" and message.mentionedUsers.first ~= nil and message.mentionedUsers.first.id ~= author and AcceptedQueue[name] == message.mentionedUsers.first.id) then
 			local Target = message.mentionedUsers.first
 			local EnemyDomain,FriendlyDomain
 			
@@ -1366,6 +1397,7 @@ client:on("messageCreate", function(message)
 					color = discordia.Color.fromRGB(114,137,218).value,
 					timestamp = discordia.Date():toISO('T',"Z")
 				}}
+				AcceptedQueue[name] = nil
 			else
 				message.channel:send("You and the Enemy Both Must Have a Domain (get one by .getdomain)")
 			end
@@ -1787,8 +1819,11 @@ client:on("messageCreate", function(message)
                 ]]
 				local winner = ""
 				local ResultString = ""
-				
-				if((TotalFriendlyCasualties / FriendlyTroopsNumberAtBeginning < TotalEnemyTroopsCasualties / EnemyTroopsNumberAtBeginning) or EnemyHasNoTroops) then
+				print(TotalFriendlyCasualties)
+				print(FriendlyTroopsNumberAtBeginning)
+				print(TotalEnemyTroopsCasualties)
+				print(EnemyTroopsNumberAtBeginning)
+				if((TotalFriendlyCasualties / FriendlyTroopsNumberAtBeginning + 0.3 < TotalEnemyTroopsCasualties / EnemyTroopsNumberAtBeginning) or EnemyHasNoTroops) then
 					winner = FriendlyAllianceName
 
 					sql = "select Coins from '" .. Guild .. "' Where ID='" .. Target.id .. "' LIMIT 1"
@@ -1856,7 +1891,7 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You and the Enemy Both Must Have a Domain (get one by .getdomain)")
 			end
-		elseif(string.lower(string.sub(message.content,2,11)) == "changename") then
+		elseif(string.lower(string.sub(message.content,2,11)) == "changealliancename") then
 			local NewName = string.sub(message.content,13,#message.content)
 
 
