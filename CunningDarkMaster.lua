@@ -1891,8 +1891,8 @@ client:on("messageCreate", function(message)
 			else
 				message.channel:send("You and the Enemy Both Must Have a Domain (get one by .getdomain)")
 			end
-		elseif(string.lower(string.sub(message.content,2,11)) == "changealliancename") then
-			local NewName = string.sub(message.content,13,#message.content)
+		elseif(string.lower(string.sub(message.content,2,19)) == "changealliancename") then
+			local NewName = string.sub(message.content,21,#message.content)
 
 
 			local sql = "select Alliance from '" .. Guild .. "' Where ID='" .. name .. "' LIMIT 1"
